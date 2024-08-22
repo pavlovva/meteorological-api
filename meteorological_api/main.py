@@ -21,7 +21,7 @@ async def get_forecast(from_ts: int, to_ts: int, lat: float, lon: float):
             if not os.path.exists(file_path):
                 raise HTTPException(status_code=404, detail=f"Data file for timestamp {ts} not found.")
 
-            data_value = get_data_at_coords(file_path, lat, lon)
+            data_value = await get_data_at_coords(file_path, lat, lon)
             result[ts] = {"temp": data_value}
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
