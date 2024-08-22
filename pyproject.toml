@@ -10,6 +10,7 @@ python = "^3.12"
 fastapi = {extras = ["all"], version = "^0.112.1"}
 uvicorn = "^0.30.6"
 aiofiles = "^24.1.0"
+aiocache = "^0.12.2"
 
 
 [build-system]

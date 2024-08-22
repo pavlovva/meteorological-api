@@ -1,6 +1,7 @@
 import array
 
 import aiofiles
+from aiocache import cached, SimpleMemoryCache
 
 
 async def read_header(file_path: str) -> dict[str, any]:
@@ -29,6 +30,7 @@ async def read_header(file_path: str) -> dict[str, any]:
         }
 
 
+@cached(ttl=120, cache=SimpleMemoryCache)
 async def get_data_at_coords(file_path: str, lat: float, lon: float) -> float:
     header = await read_header(file_path)
 
